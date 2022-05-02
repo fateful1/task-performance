@@ -16,7 +16,7 @@ contacts.addEventListener("scroll", (e) => {
   const items = Array.from(contacts.getElementsByClassName("contact"));
   const itemOffsets = items.map((item) => item.offsetTop);
   const topItemIndex = itemOffsets.findIndex(
-    (offset) => contacts.scrollTop - offset <= -18
+    (offset) => contacts.scrollTop - offset <= 0 //вместо -18 сделал 0 для корректной работы
   );
   if (topItemIndex !== -1) {
     stickyHeader.textContent = items[topItemIndex].textContent;
