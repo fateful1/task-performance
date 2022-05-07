@@ -13,14 +13,8 @@ function addContacts() {
 }
 
 contacts.addEventListener("scroll", (e) => {
-  const items = Array.from(contacts.getElementsByClassName("contact"));
-  const itemOffsets = items.map((item) => item.offsetTop);
-  const topItemIndex = itemOffsets.findIndex(
-    (offset) => contacts.scrollTop - offset <= 0 //вместо -18 сделал 0 для корректной работы
-  );
-  if (topItemIndex !== -1) {
-    stickyHeader.textContent = items[topItemIndex].textContent;
-  }
+  const item = contacts.getElementsByClassName("contact")[0];
+  stickyHeader.textContent = Math.floor(contacts.scrollTop / item.offsetTop);
 });
 
 addContacts();
